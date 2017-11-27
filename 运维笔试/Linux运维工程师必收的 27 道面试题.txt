@@ -77,7 +77,7 @@ sfdisk –d /dev/sdb：查看整块硬盘sdb的分区表
 按字母查找 /path 这样就是 找到path这个单词所在的位置，文本里可能存在多个,多次查找会显示在不同的位置。
 
 15、手动安装grub。
-grub-install /dev/sda
+grub -install /dev/sda
 
 16、修改内核参数。
 vim /etc/sysctl.conf 这里修改参数
@@ -122,7 +122,7 @@ chkconfig httpd –add 创建系统服务
 #description: useradd
 for i in `seq -f"%02g" 1 20`;do
 	useradd user$i
-	echo "user$i:`echo $RANDOM|md5sum|cut -c 1-5`" | passwd --stdin user$i >/dev/null 2>&1
+	echo "user$i:`echo $RANDOM | md5sum | cut -c 1-5`" | passwd --stdin user$i >/dev/null 2>&1
 done
 
 24、写一个脚本，实现判断192.168.1.0/24网络里，当前在线的IP有哪些，能ping通则认为在线。
@@ -207,7 +207,7 @@ for i in ${Darray};do
 	[[ "$i" == "$1" ]] && Sd=$i &&break
 done
 	else
-return66
+		return66
 fi
 #当匹配成功，进入选择，告诉用户，是否继续，输错的话进入无限循环，当用户选择
 Y,则清空目标分区，且跳出while循环
